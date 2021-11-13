@@ -27,11 +27,19 @@ class SnackBarPage extends StatelessWidget {
     return Center(
       child: ElevatedButton(
         onPressed: () {
-         print('SnackBar');
-         final snackBar=SnackBar(
-           content: Text('Deneme SnackBar'),
-         );
-         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          final snackBar = SnackBar(
+            content: const Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+
+          // Find the ScaffoldMessenger in the widget tree
+          // and use it to show a SnackBar.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         child: const Text('Show SnackBar'),
       ),
